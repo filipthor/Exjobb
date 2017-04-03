@@ -1,0 +1,3 @@
+2017-04-03
+
+Första dagen. I dag har jag börjat kolla på grundfallet, ett rum delat som två domän. Först tog jag fram en lösning över rummet (NxN) som ett domän, följt av att kolla på rum (Nx2n) över två domän (NxN). Lösningen ger fel svar. I morgon borde jag utöka endomänfallet till att fungera för rektangulära fall, samt hitta problemet i tvådomänfallet. 
