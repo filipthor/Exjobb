@@ -15,7 +15,7 @@ class simpleSolution:
 ######################## #create discrete laplace operator ###################
     totaltime = time.clock()
 
-    n=50
+    n=20
     N=n-2
     dx=1/(N+1)  
     u=np.zeros((n,n))
