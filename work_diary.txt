@@ -1,3 +1,8 @@
-2017-04-03
+2017-04-04 (09.10-17.20), lunch 1h, paus 0h20
+
+I dag har jag fixat det enkla rummet till att ha rätt dimensioner. Jag har löst den iterativa metoden att ge rätt svar. Jag har ändrat om koden till att bli en klass som kallas från en master.py-fil, varav jag kan spara lösningarna och sedan plotta t.ex skillnaden mellan det simpla fallet och den itererade lösningen. På torsdag ska jag undersöka varför felet ser ut som det gör, klura ut vad jag ska redovisa på mötet, vilka “residualer” Claus är intresserad av att titta på vid itereringen. Jag behöver också hitta ett smidigare sätt att logga arbetstid, lunch och paus. Excel kanske? 
+
+
+2017-04-03 (09.15-17.30), lunch 1h20, paus 0h15
 
 Första dagen. I dag har jag börjat kolla på grundfallet, ett rum delat som två domän. Först tog jag fram en lösning över rummet (NxN) som ett domän, följt av att kolla på rum (Nx2n) över två domän (NxN). Lösningen ger fel svar. I morgon borde jag utöka endomänfallet till att fungera för rektangulära fall, samt hitta problemet i tvådomänfallet. 
