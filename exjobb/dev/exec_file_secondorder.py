@@ -3,7 +3,7 @@ from dev import w1_one_domain
 import matplotlib.pyplot as plt
 
 
-twodomain = w2_two_domain.two_domain(n = 40,iterations=100,relaxation=1)
+twodomain = w2_two_domain_secondorder.two_domain(n = 40,iterations=100,relaxation=1)
 twodomain.solve()
 td = twodomain.get_solution()
 

@@ -21,6 +21,7 @@ class two_domain:
         self.u1_prev = []
         self.u2_prev = []
         self.diff_vector = np.zeros((iterations,1))
+        self.residual = np.zeros((iterations,2))
 
     def get_a(self,roomtype):
         if roomtype == "Dirichlet":
@@ -46,8 +47,9 @@ class two_domain:
                  + np.diag(sup, 1) \
                  + np.diag(ones(Ni * Nj - Ni), Ni)
             for i in range(0, Nj):
-                A[i * Ni + Ni-1, i * Ni + Ni-2] = 2
+                A[i * Ni+Ni-1 , i * Ni +Ni-1] = -3
             return sparse.csr_matrix(1 / (self.dx ** 2) * A)
+
 
     def get_wall(self,roomtype,wall):
         if roomtype == "Neumann":
@@ -96,6 +98,9 @@ class two_domain:
     def get_diff_vector(self):
         return self.diff_vector
 
+    def get_residuals(self):
+        return self.residual
+
     def relax(self,i,room,itr):
         if room == 1:
             if i == 0:
@@ -121,7 +126,7 @@ class two_domain:
             b1[0,:] += -1*self.get_wall("Neumann","North")
             b1[:, 0] += -1*self.get_wall("Neumann", "West")
             b1[-1,:] += -1*self.get_wall("Neumann","South")
-            b1[:,-1] += self.get_wall("Neumann","East")*2*(self.dx**2)
+            b1[:,-1] += -1*self.get_wall("Neumann","East")*(self.dx)
             b1 = np.asarray(b1).reshape(-1)/(self.dx ** 2)
 
             u1_itr = self.relax(i,1,np.reshape(scipy.sparse.linalg.spsolve(A1, b1), (self.n-2, self.n-1)))
@@ -140,11 +145,18 @@ class two_domain:
 
             u2_itr = self.relax(i,2,np.reshape(scipy.sparse.linalg.spsolve(A2,b2), (self.n-2, self.n-2)))
 
-            aj = (u2_itr[:,1]-u1_itr[:,-2])/(2*self.dx)
+            aj = (u2_itr[:,1] - u2_itr[:,0])/(self.dx)
             self.update_boundary("Neumann",aj)
             self.diff_vector[i] = np.linalg.norm(u1_itr[:,-1]-u2_itr[:,0],ord=inf)
 
-        print(u1_itr[:, -2] - u2_itr[:, 1])
+            res1 = np.reshape(A1 * np.asarray(u1_itr).reshape(-1)-b1,(self.n-2,self.n-1))
+            res2 = np.reshape(A2 * np.asarray(u2_itr).reshape(-1)-b2, (self.n - 2, self.n - 2))
+            self.residual[i,0] = np.linalg.norm(res1[:,-1],ord=inf)
+            self.residual[i, 1] = np.linalg.norm(res2[:, 0], ord=inf)
+
+
+
+
 
 
         solvetime = timeit.default_timer() - solvetime

@@ -1,3 +1,8 @@
+2017-04-10 (9.30-17.15), lunch 1h00, paus 0h30
+
+I dag fick jag på något sätt first order-koden att funka. Jag fick residualerna till att plottas, och satt en bra stund med att försöka få till snygga semilog-plots utan större framgång. Vidare har jag börjat kolla på uppdelningen av u = [u1;u_r,u2] men ahr inte kommit på så mycket. I morgon fortsätter jag på samma spår, och ska gå förbi Philipp mellan 13-15 och diskutera det jag gjort hittills.
+
+
 2017-04-07 (9.20-17.30), lunch 0h30, paus 0h15
 
 I dag fortsatte jag med arbetet jag påbörjade i går, d.v.s att bygga upp en ny struktur från grunden för att grundliggare förstå problemformuleringen. Efter lite möda fick jag till en second order förstaderivata för Neumannvillkoret, och felet gick från max = 0.8 till 0.25 men inte mindre. Dock hittar ränderna inte varandra och har en differens (inf-norm) på 0.04 (eller 0.4, minns inte) vilket inte är jättebra. Borde gå mot 0. Jag gick upp till Philipp och frågade vilken order jag skulle ha på Neumann-villkoret och fick som svar first order. Jag har skapat två nya filer för detta, en där randen är känd: “N=N-1+dx*aj” och en (extended) med en fiktiv rand N+1 = N + dx*aj. Båda ger fel resultat. På måndag måste jag gå upp till Philipp och fråga vilken sorts Neumann det ska vara, med fiktiv rand eller inte, och kanske be honom granska koden. Jag måste också skriva ut min ansökan om examensarbete. Preliminär titel är “None-overlapping Schwarz Methods”. 
