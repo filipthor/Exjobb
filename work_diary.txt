@@ -1,6 +1,11 @@
+2017-04-11 (9.20-17.00), lunch 0h40, paus 0h15
+
+I dag fortsatte jag med att fundera på uppdelningen av u, samt var uppe hos Philipp och säkerställde att det jag gjort hittills är korrekt. Enligt Philipp kan differensen mellan ränderna gå mot värde skilt från 0 men differensen mellan “exakt” och itererad ska gå mot noll så något sär fortfarande fel. Jag la lite tid på att börja strukturera upp ny python-kod för hur upplägget objekt rum med domän och väggar, men det blev snabbt inte snyggt. Jag tog också fram “felet” mellan randitr och randexakt. I morgon blir det att fortsätta med hur u ska se ut och hur A-matriserna blir vid den nya formen på u.
+
+
 2017-04-10 (9.30-17.15), lunch 1h00, paus 0h30
 
-I dag fick jag på något sätt first order-koden att funka. Jag fick residualerna till att plottas, och satt en bra stund med att försöka få till snygga semilog-plots utan större framgång. Vidare har jag börjat kolla på uppdelningen av u = [u1;u_r,u2] men ahr inte kommit på så mycket. I morgon fortsätter jag på samma spår, och ska gå förbi Philipp mellan 13-15 och diskutera det jag gjort hittills.
+I dag fick jag på något sätt first order-koden att funka. Jag fick residualerna till att plottas, och satt en bra stund med att försöka få till snygga semilog-plots utan större framgång. Vidare har jag börjat kolla på uppdelningen av u = [u1;u_r,u2] men har inte kommit på så mycket. I morgon fortsätter jag på samma spår, och ska gå förbi Philipp mellan 13-15 och diskutera det jag gjort hittills.
 
 
 2017-04-07 (9.20-17.30), lunch 0h30, paus 0h15
