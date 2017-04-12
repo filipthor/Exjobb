@@ -55,7 +55,14 @@ b = sparse.csr_matrix(create_bottom(Ni))
 
 D = sparse.csr_matrix(vstack((hstack((A,c)),hstack((r,b)))))
 
-E = sparse.csr_matrix(vstack((hstack((D,np.zeros((Ni*Nj,Ni**2)))), np.zeros((Ni**2,Ni*Nj+Ni**2)))))
+#E = sparse.csr_matrix(vstack((hstack((D,np.zeros((Ni*Nj,Ni**2)))), hstack((np.zeros((Ni**2,Ni*Nj)),np.eye(Ni**2,Ni**2))))))
+zeros1 = sparse.csr_matrix(np.zeros((Ni*Nj,Ni**2)))
+e1 = hstack((D,zeros1))
+zeros2 = np.transpose(zeros1)
+eye = sparse.csr_matrix(np.eye(Ni**2))
+e2 = hstack((zeros2,eye))
+E = sparse.csr_matrix(vstack((e1,e2)))
+
 
 
 boundary = create_boundary(Ni)
@@ -66,12 +73,11 @@ boundary = np.concatenate((boundary,np.asarray(edge).reshape(-1)))
 largerboundary = np.concatenate((boundary,np.asarray(np.zeros((Ni**2,1)).reshape(-1))))
 
 
-#solution1 = scipy.sparse.linalg.spsolve(D, -1*boundary)
-#solution2 = scipy.sparse.linalg.spsolve(E, -1*largerboundary)
+solution1 = scipy.sparse.linalg.spsolve(D, -1*boundary)
+solution2 = scipy.sparse.linalg.spsolve(E, -1*largerboundary)
 #solution_nosparse = np.linalg.solve(E.toarray(),-1*largerboundary)
-print(np.linalg.det(D.toarray()))
-print(np.linalg.det(E.toarray()))
-
+print(solution1)
+print(solution2)
 #print(boundary)
 
 

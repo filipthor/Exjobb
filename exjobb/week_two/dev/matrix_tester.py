@@ -6,4 +6,4 @@ A = np.ones((2,2))
 B = np.zeros((5,5))
 B[0:A.shape[0],0:A.shape[1]] = A
 u = np.array([1,2,0,0,0])
-print(np.linalg.det(B))
+print(np.eye(3,3))

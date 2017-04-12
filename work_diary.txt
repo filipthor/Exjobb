@@ -1,6 +1,6 @@
-2017-04-12 (9.30-17.00), lunch 0h50, paus 0h20
+2017-04-12 (9.30-17.30), lunch 0h50, paus 0h20
 
-Jag har kollat på hur det ska gå till att expandera till en gemensam u-matris, och tagit fram A-matrisen för Neumanndomänet vid en sådan expansion. Dock stötte jag på krångel nu precis vid slutet då det inte går att lösa solve(A,b) eftersom A är singulär p.g.a alla nollor. Detta borde jag fråga om hur man ska hantera det. 
+Jag har kollat på hur det ska gå till att expandera till en gemensam u-matris, och tagit fram A-matrisen för Neumanndomänet vid en sådan expansion. Dock stötte jag på krångel nu precis vid slutet då det inte går att lösa solve(A,b) eftersom A är singulär p.g.a alla nollor. Detta borde jag fråga om hur man ska hantera det. Idé: Ha separata b-vektorer som är 0 för allt annat än för den del av A som är relevant, samt sätt hela diagonalen i A till 1 för att restrikta. Det fungerar! 
 
 
 2017-04-11 (9.20-17.00), lunch 0h40, paus 0h15
