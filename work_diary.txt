@@ -1,3 +1,8 @@
+2017-04-12 (9.30-17.00), lunch 0h50, paus 0h20
+
+Jag har kollat på hur det ska gå till att expandera till en gemensam u-matris, och tagit fram A-matrisen för Neumanndomänet vid en sådan expansion. Dock stötte jag på krångel nu precis vid slutet då det inte går att lösa solve(A,b) eftersom A är singulär p.g.a alla nollor. Detta borde jag fråga om hur man ska hantera det. 
+
+
 2017-04-11 (9.20-17.00), lunch 0h40, paus 0h15
 
 I dag fortsatte jag med att fundera på uppdelningen av u, samt var uppe hos Philipp och säkerställde att det jag gjort hittills är korrekt. Enligt Philipp kan differensen mellan ränderna gå mot värde skilt från 0 men differensen mellan “exakt” och itererad ska gå mot noll så något sär fortfarande fel. Jag la lite tid på att börja strukturera upp ny python-kod för hur upplägget objekt rum med domän och väggar, men det blev snabbt inte snyggt. Jag tog också fram “felet” mellan randitr och randexakt. I morgon blir det att fortsätta med hur u ska se ut och hur A-matriserna blir vid den nya formen på u.

@@ -18,37 +18,45 @@ class two_domain:
         self.dx = 1 / (self.n+1)
         self.neumann_east = 0
         self.dirichlet_west = 0
+        self.u_gamma = []
+        self.error = np.zeros((iterations,1))
         self.u1_prev = []
         self.u2_prev = []
         self.diff_vector = np.zeros((iterations,1))
         self.residual = np.zeros((iterations,2))
 
+    def set_ugamma(self,ugamma):
+        self.u_gamma = ugamma
+
+    def get_error(self):
+        return self.error
+
     def get_a(self,roomtype):
         if roomtype == "Dirichlet":
             N = self.n-2
-            sup = ones(N ** 2 - 1)
+            sup = np.ones(N ** 2 - 1)
             for i in range(1, len(sup) + 1):
                 if i % N == 0: sup[i - 1] = 0
-            A = np.diag(ones(N ** 2 - N), -N) \
+            A = np.diag(np.ones(N ** 2 - N), -N) \
                  + np.diag(sup, -1) \
-                 + np.diag(-4. * ones(N ** 2), 0) \
+                 + np.diag(-4. * np.ones(N ** 2), 0) \
                  + np.diag(sup, 1) \
-                 + np.diag(ones(N ** 2 - N), N)
-            return sparse.csr_matrix(1 / (self.dx ** 2) * A)
+                 + np.diag(np.ones(N ** 2 - N), N)
+            return sparse.csr_matrix(A)#1 / (self.dx ** 2) * A)
         if roomtype == "Neumann":
-            Ni = self.n - 1
-            Nj = self.n - 2
-            sup = ones(Ni * Nj - 1)
+            Ni = self.n - 2
+            Nj = self.n - 1
+            sup = np.ones(Ni * Nj - 1)
             for i in range(1, len(sup) + 1):
-                if i % Ni == 0: sup[i - 1] = 0
-            A = np.diag(ones(Ni * Nj - Ni), -Ni) \
-                 + np.diag(sup, -1) \
-                 + np.diag(-4. * ones(Ni * Nj), 0) \
-                 + np.diag(sup, 1) \
-                 + np.diag(ones(Ni * Nj - Ni), Ni)
-            for i in range(0, Nj):
-                A[i * Ni+Ni-1 , i * Ni +Ni-1] = -3
-            return sparse.csr_matrix(1 / (self.dx ** 2) * A)
+                if i % Nj == 0: sup[i - 1] = 0
+            A = np.diag(np.ones(Ni * Nj - Nj), -Nj) \
+                + np.diag(sup, -1) \
+                + np.diag(-4. * np.ones(Ni * Nj), 0) \
+                + np.diag(sup, 1) \
+                + np.diag(np.ones(Ni * Nj - Nj), Nj)
+            for i in range(0, Ni):
+                A[i * Nj+Nj-1 , i * Nj +Nj-1] = -3
+            return sparse.csr_matrix(A)#1 / (self.dx ** 2) * A)
 
 
     def get_wall(self,roomtype,wall):
@@ -116,6 +124,7 @@ class two_domain:
             return self.u2_prev
 
     def solve(self):
+
         A1 = self.get_a("Neumann")
         A2 = self.get_a("Dirichlet")
 
@@ -123,13 +132,13 @@ class two_domain:
         for i in range(self.iterations):
 
             b1 = np.zeros((self.n-2,self.n-1))
-            b1[0,:] += -1*self.get_wall("Neumann","North")
-            b1[:, 0] += -1*self.get_wall("Neumann", "West")
-            b1[-1,:] += -1*self.get_wall("Neumann","South")
-            b1[:,-1] += -1*self.get_wall("Neumann","East")*(self.dx)
-            b1 = np.asarray(b1).reshape(-1)/(self.dx ** 2)
+            b1[0,:] += self.get_wall("Neumann","North")
+            b1[:, 0] += self.get_wall("Neumann", "West")
+            b1[-1,:] += self.get_wall("Neumann","South")
+            b1[:,-1] += self.get_wall("Neumann","East")#*(self.dx)
+            b1 = np.asarray(b1).reshape(-1)#/(self.dx ** 2)
 
-            u1_itr = self.relax(i,1,np.reshape(scipy.sparse.linalg.spsolve(A1, b1), (self.n-2, self.n-1)))
+            u1_itr = self.relax(i,1,np.reshape(scipy.sparse.linalg.spsolve(A1, -1*b1), (self.n-2, self.n-1)))
 
             self.update_boundary("Dirichlet", u1_itr[:,-1])
 
@@ -141,13 +150,14 @@ class two_domain:
             b2[:, 0] += -1*self.get_wall("Dirichlet", "West")
             b2[-1,:] += -1*self.get_wall("Dirichlet","South")
             b2[:,-1] += -1*self.get_wall("Dirichlet","East")
-            b2 = np.asarray(b2).reshape(-1)/ (self.dx ** 2)
+            b2 = np.asarray(b2).reshape(-1)#/ (self.dx ** 2)
 
             u2_itr = self.relax(i,2,np.reshape(scipy.sparse.linalg.spsolve(A2,b2), (self.n-2, self.n-2)))
 
-            aj = (u2_itr[:,1] - u2_itr[:,0])/(self.dx)
+            aj = (u2_itr[:,1] - u2_itr[:,0])#/(self.dx)
             self.update_boundary("Neumann",aj)
             self.diff_vector[i] = np.linalg.norm(u1_itr[:,-1]-u2_itr[:,0],ord=inf)
+            self.error[i] = np.linalg.norm(self.u_gamma - u1_itr[:,-1],ord=inf)
 
             res1 = np.reshape(A1 * np.asarray(u1_itr).reshape(-1)-b1,(self.n-2,self.n-1))
             res2 = np.reshape(A2 * np.asarray(u2_itr).reshape(-1)-b2, (self.n - 2, self.n - 2))

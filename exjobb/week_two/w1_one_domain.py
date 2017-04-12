@@ -22,7 +22,7 @@ class one_domain:
         N = n - 2
         Ny = 2*n - 3
         Nx= N
-        dx = 1 / (N + 1)
+        dx = 1 / (n + 1)
 
         # wall temperatures
         un = ht
@@ -44,7 +44,7 @@ class one_domain:
                 + np.diag(sup, 1) \
                 + np.diag(ones(Nx*Ny - Ny),Ny)
 
-        D = sparse.csr_matrix((1 /dx ** 2) * A)
+        D = sparse.csr_matrix(A)#(1 /(dx ** 2)) * A)
 
         # boundary conditions
         bc = np.zeros((Nx, Ny))
@@ -52,7 +52,7 @@ class one_domain:
         bc[0, :] += us
         bc[:, 0] += uw
         bc[-1, :] += un
-        bc = bc / (dx ** 2)
+        #bc = bc / (dx ** 2)
 
         bc = np.asarray(bc).reshape(-1)  # bc as vector
 
