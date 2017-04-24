@@ -1,3 +1,8 @@
+2017-04-26 (12.00-17.00), lunch 1h00, paus 0h15
+
+Åter tillbaka efter omtenta-uppehållet. Jag började dagen med att korrigera lösningsformen på expanderad form, och insåg under tiden att jag tar fel ränder för att räkna ut aj, varpå jag korrigerade det i förra veckans kod och får nu ett minskande fel per iteration! Success! Jag fortsatte med att implementera den fulla solvern på expanderad form, och efter lite bug-fixande kör solver men ger fel lösning. I morgon blir det bugletande, samt att jag måste maila Philipp och Claus och boka in nytt möte i veckan för att få feedback och se vart jag ska framåt. 
+
+
 2017-04-12 (9.30-17.30), lunch 0h50, paus 0h20
 
 Jag har kollat på hur det ska gå till att expandera till en gemensam u-matris, och tagit fram A-matrisen för Neumanndomänet vid en sådan expansion. Dock stötte jag på krångel nu precis vid slutet då det inte går att lösa solve(A,b) eftersom A är singulär p.g.a alla nollor. Detta borde jag fråga om hur man ska hantera det. Idé: Ha separata b-vektorer som är 0 för allt annat än för den del av A som är relevant, samt sätt hela diagonalen i A till 1 för att restrikta. Det fungerar! 

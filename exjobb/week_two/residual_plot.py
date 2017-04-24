@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 
 
-twodomain = w2_two_domain.two_domain(n = 40,iterations=30,relaxation=0.8)
+twodomain = w2_two_domain.two_domain(n = 40,iterations=200,relaxation=0.5)
 twodomain.solve()
 td = twodomain.get_solution()
 #twodomain.visualize()

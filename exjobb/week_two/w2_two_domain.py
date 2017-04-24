@@ -18,7 +18,7 @@ class two_domain:
         self.dx = 1 / (self.n+1)
         self.neumann_east = 0
         self.dirichlet_west = 0
-        self.u_gamma = []
+        self.u_gamma = np.zeros((n-2,1))
         self.error = np.zeros((iterations,1))
         self.u1_prev = []
         self.u2_prev = []
@@ -154,7 +154,8 @@ class two_domain:
 
             u2_itr = self.relax(i,2,np.reshape(scipy.sparse.linalg.spsolve(A2,b2), (self.n-2, self.n-2)))
 
-            aj = (u2_itr[:,1] - u2_itr[:,0])#/(self.dx)
+            #aj = (u2_itr[:,1] - u2_itr[:,0])#/(self.dx)
+            aj = (u2_itr[:, 0] - u1_itr[:, -1])  # /(self.dx)
             self.update_boundary("Neumann",aj)
             self.diff_vector[i] = np.linalg.norm(u1_itr[:,-1]-u2_itr[:,0],ord=inf)
             self.error[i] = np.linalg.norm(self.u_gamma - u1_itr[:,-1],ord=inf)

@@ -2,12 +2,12 @@ from week_two import w2_two_domain
 from week_two import w1_one_domain
 import matplotlib.pyplot as plt
 import numpy as np
+from IPython import embed
 
 
-
-N = 50
-itr = 100
-rel = 0.2
+N = 40
+itr = 20
+rel = 1
 onedomain = w1_one_domain.one_domain(n = N)
 onedomain.solve()
 od = onedomain.get_solution()
@@ -19,7 +19,7 @@ td = twodomain.get_solution()
 #twodomain.visualize()
 
 
-
+#embed()
 
 dv = twodomain.get_diff_vector()
 err = twodomain.get_error()
