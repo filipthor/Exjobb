@@ -5,8 +5,8 @@ import numpy as np
 from IPython import embed
 
 
-N = 40
-itr = 20
+N = 10
+itr = 2
 rel = 1
 onedomain = w1_one_domain.one_domain(n = N)
 onedomain.solve()

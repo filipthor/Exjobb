@@ -118,7 +118,7 @@ class two_domain:
     def get_solution(self):
         return self.solution
 
-    def set_solution(self,room1,room2):
+    def set_solution(self,domain1,domain2):
         u1 = np.zeros((self.n,self.n))
         u2 = u1.copy()
         u = np.zeros((self.n,self.n*2-1))
@@ -126,13 +126,13 @@ class two_domain:
         u1[-1,:] = self.get_wall("Neumann","South")
         u1[:,0] = self.get_wall("Neumann","West")
         u1[1:-1,-1] = self.u_gamma
-        u1[1:-1,1:-1] = np.reshape(room1[0:(self.n-2)**2],(self.n-2,self.n-2))
+        u1[1:-1,1:-1] = np.reshape(domain1[0:(self.n-2)**2],(self.n-2,self.n-2))
 
 
         u2[-1,:] = self.get_wall("Dirichlet","South")
         u2[:,-1] = self.get_wall("Dirichlet","East")
         u2[0,:] = self.get_wall("Dirichlet","North")
-        u2[1:-1,1:-1] = np.reshape(room2[(self.n-2)**2+(self.n-2):],(self.n-2,self.n-2))
+        u2[1:-1,1:-1] = np.reshape(domain2[(self.n-2)**2+(self.n-2):],(self.n-2,self.n-2))
 
         u[:, self.n - 1:2 * self.n - 1] = u2
         u[:, 0:self.n] = u1
@@ -158,24 +158,24 @@ class two_domain:
                 self.u2_prev = self.relaxation * itr + (1 - self.relaxation) * self.u2_prev
             return self.u2_prev
 
-    def get_b1(self):
-        b1 = np.zeros((self.n - 2, self.n - 1))
-        b1[0, :] += -1*self.get_wall("Neumann", "North")
-        b1[:, 0] += -1*self.get_wall("Neumann", "West")
-        b1[-1, :] += -1*self.get_wall("Neumann", "South")
-        b1[:, -1] += -1*self.aj
-        b = np.zeros((self.n-1, self.n-2))
-        b[:-1,:] = b1[:,:-1]
-        b[-1,:] = b1[:,-1]
-        return np.asarray(np.vstack((b,np.zeros((self.n - 2, self.n - 2))))).reshape(-1)
-
-    def get_b2(self):
-        b2 = np.zeros((self.n-2,self.n-2))
-        b2[0,:] += -1*self.get_wall("Dirichlet","North")
-        b2[:, 0] += -1*self.u_gamma
-        b2[-1,:] += -1*self.get_wall("Dirichlet","South")
-        b2[:,-1] += -1*self.get_wall("Dirichlet","East")
-        return np.asarray(np.vstack((np.zeros((self.n-1, self.n-2)), b2))).reshape(-1)
+    def get_b(self,domain):
+        if domain == "Neumann":
+            b1 = np.zeros((self.n - 2, self.n - 1))
+            b1[0, :] += -1*self.get_wall("Neumann", "North")
+            b1[:, 0] += -1*self.get_wall("Neumann", "West")
+            b1[-1, :] += -1*self.get_wall("Neumann", "South")
+            b1[:, -1] += -1*self.aj
+            b = np.zeros((self.n-1, self.n-2))
+            b[:-1,:] = b1[:,:-1]
+            b[-1,:] = b1[:,-1]
+            return np.asarray(np.vstack((b,np.zeros((self.n - 2, self.n - 2))))).reshape(-1)
+        if domain == "Dirichlet":
+            b2 = np.zeros((self.n - 2, self.n - 2))
+            b2[0, :] += -1 * self.get_wall("Dirichlet", "North")
+            b2[:, 0] += -1 * self.u_gamma
+            b2[-1, :] += -1 * self.get_wall("Dirichlet", "South")
+            b2[:, -1] += -1 * self.get_wall("Dirichlet", "East")
+            return np.asarray(np.vstack((np.zeros((self.n - 1, self.n - 2)), b2))).reshape(-1)
 
     def solve(self):
 
@@ -185,23 +185,18 @@ class two_domain:
         solvetime = timeit.default_timer()
         for i in range(self.iterations):
 
-            b1 = self.get_b1()
-            u1_itr = scipy.sparse.linalg.spsolve(A1, b1)
+            b1 = self.get_b("Neumann")
+            u1_itr = np.reshape(scipy.sparse.linalg.spsolve(A1, b1),(2*self.n-3,self.n-2))
+            #self.u_gamma = u1_itr[(self.n-2)**2:(self.n-2)**2+(self.n-2)] #vector form
+            self.u_gamma = u1_itr[self.n-2,:] # matrix form
+            #print(self.u_gamma)
+            #print("===")
+            b2 = self.get_b("Dirichlet")
+            u2_itr = np.reshape(scipy.sparse.linalg.spsolve(A2, b2),(2*self.n-3,self.n-2))
 
-            self.u_gamma = u1_itr[(self.n-2)**2:(self.n-2)**2+(self.n-2)]
+            #self.aj = (u2_itr[(self.n-2)**2+(self.n-2):(self.n-2)**2+2*(self.n-2)] - self.u_gamma) # vector
+            self.aj = (u2_itr[self.n-1:,0]-self.u_gamma)
 
-            b2 = self.get_b2()
-            u2_itr = scipy.sparse.linalg.spsolve(A2, b2)
-
-            #aj = (u2_itr[:,1] - u2_itr[:,0])#/(self.dx)
-            self.aj = (u2_itr[(self.n-2)**2+(self.n-2):(self.n-2)**2+2*(self.n-2)] - self.u_gamma)  # /(self.dx)
-            #self.diff_vector[i] = np.linalg.norm(u1_itr[:,-1]-u2_itr[:,0],ord=inf)
-            #self.error[i] = np.linalg.norm(self.u_gamma - u1_itr[:,-1],ord=inf)
-
-            #res1 = np.reshape(A1 * np.asarray(u1_itr).reshape(-1)-b1,(self.n-2,self.n-1))
-            #res2 = np.reshape(A2 * np.asarray(u2_itr).reshape(-1)-b2, (self.n - 2, self.n - 2))
-            #self.residual[i,0] = np.linalg.norm(res1[:,-1],ord=inf)
-            #self.residual[i, 1] = np.linalg.norm(res2[:, 0], ord=inf)
 
 
 
@@ -211,4 +206,4 @@ class two_domain:
         solvetime = timeit.default_timer() - solvetime
         print("It took {} seconds to iterate a solution.".format(solvetime))
 
-        self.set_solution(u1_itr,u2_itr)
+        self.set_solution(np.asarray(u1_itr).reshape(-1),np.asarray(u2_itr).reshape(-1))

@@ -136,6 +136,7 @@ class two_domain:
             b1[:, 0] += self.get_wall("Neumann", "West")
             b1[-1,:] += self.get_wall("Neumann","South")
             b1[:,-1] += self.get_wall("Neumann","East")#*(self.dx)
+            print(b1)
             b1 = np.asarray(b1).reshape(-1)#/(self.dx ** 2)
 
             u1_itr = self.relax(i,1,np.reshape(scipy.sparse.linalg.spsolve(A1, -1*b1), (self.n-2, self.n-1)))
@@ -156,6 +157,7 @@ class two_domain:
 
             #aj = (u2_itr[:,1] - u2_itr[:,0])#/(self.dx)
             aj = (u2_itr[:, 0] - u1_itr[:, -1])  # /(self.dx)
+
             self.update_boundary("Neumann",aj)
             self.diff_vector[i] = np.linalg.norm(u1_itr[:,-1]-u2_itr[:,0],ord=inf)
             self.error[i] = np.linalg.norm(self.u_gamma - u1_itr[:,-1],ord=inf)

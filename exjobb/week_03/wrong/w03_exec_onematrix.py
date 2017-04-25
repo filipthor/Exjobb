@@ -1,13 +1,13 @@
 import matplotlib.pyplot as plt
 
-from week_03 import w03_2d_block
+from week_03.wrong import w03_2d_onematrix
 from week_two import w1_one_domain
 
-N = 40
-itr = 250
+N = 30
+itr = 300
 rel = 1
 
-twodomain = w03_2d_block.two_domain(n = N, iterations=itr, relaxation=rel)
+twodomain = w03_2d_onematrix.two_domain(n = N, iterations=itr, relaxation=rel)
 twodomain.solve()
 td = twodomain.get_solution()
 
