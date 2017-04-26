@@ -1,3 +1,9 @@
+2017-04-26 (09.30-18.00), lunch 1h00, paus 1h00
+
+I dag har jag typ inte kodat något alls utan snarare kollat på hur A-blocken förändras för N på N,W,S,E, samt LaTeXat dessa ifall om att det behövs. Jag har även börjat kolla på hur man kan tvinga systemet med blockmatriser till att bli överbestämt. Jag har även börjat kolla på hur man kan formulera problemet som DAE, där jag vid första anblick tror att det finns större chanser att hitta / analysera vad som händer vid överbestämning. Spontant vid PDE som är väldigt matristungt vet jag inte riktigt hur det ska gå till att påtvinga dubbla ränder. 
+
+
+
 2017-04-25 (09.15-17.15), lunch 1h00, paus 0h30
 
 Jag började dagen med att leta fel i koden som gör att lösningen blir fel. Jag konstaterade snabbt att det har med aj att göra, och efter kanske en-två timmar insåg jag att jag tar översta raden (med flit), men att randen un+1-un = aj un+1-randen är ju den västra randen på u2, inte norra. Tänkte fel alltså. Jag har mailat om möte med Philipp och Claus, och har bokat in möte fredag 15.30. Jag var uppe och diskuterade den expanderade koden, vilket vid första anblick var fel, men jag insåg efter att ha gått över det att jag måste ha gjort rätt, bara att jag var otydlig i min beskrivning till Philipp. (Blockmatris om 3x3, inte 2x2 som jag målat). Det jag har är faktiskt 3x3. Jag kopierade och skrev om koden till att nu hantera de två rummen separat igen, fast om block 2x2 * u1/ur och 2x2 * ur/u2. Jag började även LaTeXa lite grund till rapporten.
