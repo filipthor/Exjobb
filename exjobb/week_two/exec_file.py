@@ -5,9 +5,9 @@ import numpy as np
 from IPython import embed
 
 
-N = 10
-itr = 2
-rel = 1
+N = 50
+itr = 250
+rel = 0.2
 onedomain = w1_one_domain.one_domain(n = N)
 onedomain.solve()
 od = onedomain.get_solution()
