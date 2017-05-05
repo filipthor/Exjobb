@@ -12,11 +12,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="w03_2d_over.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/week_03/w03_2d_over.py">
+      <file leaf-file-name="w04_2d_over.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/week_04/AdaptLsq/w04_2d_over.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-628">
-              <caret line="133" column="28" lean-forward="true" selection-start-line="133" selection-start-column="28" selection-end-line="133" selection-end-column="28" />
+            <state relative-caret-position="441">
+              <caret line="214" column="0" lean-forward="true" selection-start-line="214" selection-start-column="0" selection-end-line="214" selection-end-column="0" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -24,45 +24,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="w03_tester.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/week_03/dev/w03_tester.py">
+      <file leaf-file-name="w04_exec_over.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/week_04/w04_exec_over.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="26" column="5" lean-forward="true" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="w03_2d_over_nonsparse.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/week_03/w03_2d_over_nonsparse.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="431">
-              <caret line="180" column="28" lean-forward="true" selection-start-line="180" selection-start-column="28" selection-end-line="180" selection-end-column="28" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="w03_exec_over.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/week_03/w03_exec_over.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="570">
-              <caret line="38" column="14" lean-forward="true" selection-start-line="38" selection-start-column="14" selection-end-line="38" selection-end-column="14" />
+            <state relative-caret-position="210">
+              <caret line="14" column="7" lean-forward="false" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="exec_file.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/week_two/exec_file.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="118">
-              <caret line="8" column="9" lean-forward="true" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="9" />
-              <folding>
-                <element signature="e#0#34#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -80,9 +48,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/dev/diary" />
-        <option value="$PROJECT_DIR$/dev/simple_tworoom.py" />
-        <option value="$PROJECT_DIR$/dev/python_tester.py" />
         <option value="$PROJECT_DIR$/dev/Thing.py" />
         <option value="$PROJECT_DIR$/dev/Simple_Difference.py" />
         <option value="$PROJECT_DIR$/dev/tester.py" />
@@ -130,15 +95,18 @@
         <option value="$PROJECT_DIR$/week_two/exec_file.py" />
         <option value="$PROJECT_DIR$/week_03/w03_2d_over_nonsparse.py" />
         <option value="$PROJECT_DIR$/week_03/w03_exec_over.py" />
+        <option value="$PROJECT_DIR$/week_04/w04_2d_over.py" />
         <option value="$PROJECT_DIR$/week_03/dev/w03_tester.py" />
+        <option value="$PROJECT_DIR$/week_04/w04_exec_over.py" />
+        <option value="$PROJECT_DIR$/week_04/AdaptLsq/w04_2d_over.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-241" />
+    <option name="x" value="-126" />
     <option name="y" value="-1045" />
-    <option name="width" value="1796" />
-    <option name="height" value="951" />
+    <option name="width" value="1633" />
+    <option name="height" value="934" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -201,7 +169,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="week_03" />
+              <option name="myItemId" value="week_04" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -218,10 +186,6 @@
               <option name="myItemId" value="week_03" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dev" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
@@ -232,14 +196,15 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/week_04" />
       <recent name="$PROJECT_DIR$/week_03/wrong" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/week_03/AdaptLsq" />
+      <recent name="$PROJECT_DIR$/week_04" />
       <recent name="$PROJECT_DIR$/week_03" />
       <recent name="$PROJECT_DIR$/week_03/dev" />
       <recent name="$PROJECT_DIR$/week_two" />
-      <recent name="$PROJECT_DIR$/dev" />
-      <recent name="$PROJECT_DIR$/week_one/dev" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -254,7 +219,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.w03_tester">
+  <component name="RunManager" selected="Python.w04_exec_over">
     <configuration default="false" name="exec_file (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -291,24 +256,6 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="w03_exec (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/week_03" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="exjobb" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/week_03/w03_exec.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <method />
-    </configuration>
     <configuration default="false" name="residual_plot" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -340,6 +287,24 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="exjobb" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/week_03/w03_exec_over.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="w04_exec_over" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/week_04" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="exjobb" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/week_04/w04_exec_over.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -466,17 +431,17 @@
       <item index="1" class="java.lang.String" itemvalue="Python.master" />
       <item index="2" class="java.lang.String" itemvalue="Python.exec_file (1)" />
       <item index="3" class="java.lang.String" itemvalue="Python.w03_tester" />
-      <item index="4" class="java.lang.String" itemvalue="Python.w03_exec (1)" />
-      <item index="5" class="java.lang.String" itemvalue="Python.residual_plot" />
-      <item index="6" class="java.lang.String" itemvalue="Python.w03_exec_over" />
+      <item index="4" class="java.lang.String" itemvalue="Python.residual_plot" />
+      <item index="5" class="java.lang.String" itemvalue="Python.w03_exec_over" />
+      <item index="6" class="java.lang.String" itemvalue="Python.w04_exec_over" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.w03_tester" />
-        <item index="1" class="java.lang.String" itemvalue="Python.w03_exec_over" />
-        <item index="2" class="java.lang.String" itemvalue="Python.residual_plot" />
-        <item index="3" class="java.lang.String" itemvalue="Python.exec_file (1)" />
-        <item index="4" class="java.lang.String" itemvalue="Python.w03_exec (1)" />
+        <item index="0" class="java.lang.String" itemvalue="Python.w04_exec_over" />
+        <item index="1" class="java.lang.String" itemvalue="Python.w03_tester" />
+        <item index="2" class="java.lang.String" itemvalue="Python.w03_exec_over" />
+        <item index="3" class="java.lang.String" itemvalue="Python.residual_plot" />
+        <item index="4" class="java.lang.String" itemvalue="Python.exec_file (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -499,13 +464,12 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-241" y="-1045" width="1796" height="951" extended-state="0" />
-    <editor active="true" />
+    <frame x="-126" y="-1045" width="1633" height="934" extended-state="0" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12694877" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.088181265" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2344098" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4733619" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26952696" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24881642" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -552,10 +516,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/dev/runner.py" />
-    <entry file="file://$PROJECT_DIR$/dev/simple_oneroom_resize.py" />
-    <entry file="file://$PROJECT_DIR$/dev/master2.py" />
-    <entry file="file://$PROJECT_DIR$/dev/master.py" />
     <entry file="file://$PROJECT_DIR$/dev/residual.py" />
     <entry file="file://$PROJECT_DIR$/dev/uneven_difference.py" />
     <entry file="file://$PROJECT_DIR$/dev/simple_tworoom_test_resize.py" />
@@ -739,16 +699,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/week_03/w03_2d_block.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="672">
-          <caret line="156" column="20" lean-forward="false" selection-start-line="156" selection-start-column="20" selection-end-line="156" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#13#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/week_two/residual_plot.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -763,49 +713,79 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/week_03/w03_2d_over.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-628">
-          <caret line="133" column="28" lean-forward="true" selection-start-line="133" selection-start-column="28" selection-end-line="133" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/week_04/w03_2d_over.py" />
     <entry file="file://$PROJECT_DIR$/week_03/w03_2d_over_nonsparse.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="431">
-          <caret line="180" column="28" lean-forward="true" selection-start-line="180" selection-start-column="28" selection-end-line="180" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/week_two/exec_file.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="118">
-          <caret line="8" column="9" lean-forward="true" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="9" />
-          <folding>
-            <element signature="e#0#34#0" expanded="true" />
-          </folding>
+          <caret line="180" column="28" lean-forward="false" selection-start-line="180" selection-start-column="28" selection-end-line="180" selection-end-column="28" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/week_03/w03_exec_over.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="570">
-          <caret line="38" column="14" lean-forward="true" selection-start-line="38" selection-start-column="14" selection-end-line="38" selection-end-column="14" />
+          <caret line="38" column="14" lean-forward="false" selection-start-line="38" selection-start-column="14" selection-end-line="38" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/week_two/exec_file.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="118">
+          <caret line="8" column="9" lean-forward="false" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/week_03/dev/w03_tester.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/week_04/w04_2d_over.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9">
+          <caret line="65" column="0" lean-forward="false" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#13#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/week_03/w03_2d_over.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="133" column="28" lean-forward="false" selection-start-line="133" selection-start-column="28" selection-end-line="133" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/week_03/w03_2d_block.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="156" column="20" lean-forward="false" selection-start-line="156" selection-start-column="20" selection-end-line="156" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/week_04/w04_exec_over.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="7" lean-forward="false" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/week_03/dev/w03_tester.py">
+    <entry file="file://$PROJECT_DIR$/week_04/AdaptLsq/w04_2d_over.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="26" column="5" lean-forward="true" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
-          <folding />
+        <state relative-caret-position="441">
+          <caret line="214" column="0" lean-forward="true" selection-start-line="214" selection-start-column="0" selection-end-line="214" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

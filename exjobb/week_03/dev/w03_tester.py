@@ -22,12 +22,14 @@ for i in range(ni):
 # print("Res",sol[1])
 # print("Rank",sol[2])
 # print("s",sol[3])
-a = scipy.sparse.csr_matrix(A)
+#a = scipy.sparse.csr_matrix(A)
 
-n = 6
-B = np.ones(((n-2),(n-2)**2))
-b = np.ones(((n-2)**2,1))
+#n = 6
+#B = np.ones(((n-2),(n-2)**2))
+#b = np.ones(((n-2)**2,1))
 
-print(np.dot(B,b))
+D = np.array(([1,1],[3,0],[2,1],[0,1],[0,1]))
+d = np.array(([1],[1]))
+print(np.dot(D,d))
 
 
