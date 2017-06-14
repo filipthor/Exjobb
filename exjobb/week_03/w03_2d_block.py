@@ -6,7 +6,17 @@ from scipy import sparse
 import scipy.sparse.linalg
 from scipy.sparse import hstack
 from scipy.sparse import vstack
+from week_two import w1_one_domain
 
+
+'''
+Written 2017-05-something
+Updated 2017-06-14
+
+Solves over two subdomains using Neumann conditions over interface for Omega1 and Dirichlet conditions for Omega2
+Updated: Produces difference more methodically, looking at difference over entire domain, not just interface
+         more in line with later code.
+'''
 
 class two_domain:
 
@@ -28,9 +38,13 @@ class two_domain:
         self.residual = np.zeros((iterations,2))
         self.aj = 0#np.zeros((n-2,1)) #Spännande saker händer vid -10
         self.utrue = []
+        self.difference = np.zeros((iterations, 1))
 
     def set_utrue(self,utrue):
         self.utrue = utrue
+
+    def get_difference(self):
+        return self.difference
 
     def get_error(self):
         return self.error
@@ -155,6 +169,10 @@ class two_domain:
             return np.asarray(b).reshape(-1)
 
     def solve(self):
+        one_domain = w1_one_domain.one_domain(self.n)
+        one_domain.solve()
+        u_simple = one_domain.get_solution()
+
         A1 = self.get_a("Neumann")
         A2 = self.get_a("Dirichlet")
 
@@ -171,9 +189,10 @@ class two_domain:
             u2_itr = self.relax(i, "Dirichlet", u2_itr)
             self.aj = (u2_itr[1:,0]-self.u_gamma)
 
+            self.set_solution(u1_itr[:-1, :], u2_itr[1:, :])
 
-
-            self.error[i] = np.linalg.norm(self.utrue - self.u_gamma,ord=inf)
+            #self.error[i] = np.linalg.norm(self.utrue - self.u_gamma,ord=inf)
+            self.difference[i] = np.linalg.norm(self.solution - u_simple, ord='fro')
 
             #res1 = np.reshape(A1 * np.asarray(u1_itr).reshape(-1)-b1,(self.n-2,self.n-1))
             #res2 = np.reshape(A2 * np.asarray(u2_itr).reshape(-1)-b2, (self.n - 2, self.n - 2))

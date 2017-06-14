@@ -23,6 +23,7 @@ class two_domain:
         self.u1_prev = []
         self.u2_prev = []
         self.diff_vector = np.zeros((iterations,1))
+        self.difference = np.zeros((iterations,1))
         self.residual = np.zeros((iterations,2))
 
     def set_ugamma(self,ugamma):
@@ -30,6 +31,9 @@ class two_domain:
 
     def get_error(self):
         return self.error
+
+    def set_prim_solution(self,prim_sol):
+        self.prim_sol = prim_sol
 
     def get_a(self,roomtype):
         if roomtype == "Dirichlet":
@@ -109,6 +113,9 @@ class two_domain:
     def get_residuals(self):
         return self.residual
 
+    def get_difference(self):
+        return self.difference
+
     def relax(self,i,room,itr):
         if room == 1:
             if i == 0:
@@ -166,6 +173,9 @@ class two_domain:
             res2 = np.reshape(A2 * np.asarray(u2_itr).reshape(-1)-b2, (self.n - 2, self.n - 2))
             self.residual[i,0] = np.linalg.norm(res1[:,-1],ord=inf)
             self.residual[i, 1] = np.linalg.norm(res2[:, 0], ord=inf)
+
+            self.set_solution(u1_itr, u2_itr)
+            self.difference[i] = np.linalg.norm(self.solution-self.prim_sol,ord="fro")
 
 
 

@@ -7,6 +7,12 @@ import scipy.sparse.linalg
 from scipy.sparse import hstack
 from scipy.sparse import vstack
 
+'''
+This code contains the two domain solver overdetermined, as non-sparse, 
+using the np.linalg.lstsq solver instead of the scipy lsq iterative least square-
+-solver.
+'''
+
 
 class two_domain:
 
@@ -126,6 +132,12 @@ class two_domain:
         u[:, self.n - 1:2 * self.n - 1] = u2
         u[:, 0:self.n] = u1
         self.solution = flipud(u)
+
+        u_sol = np.vstack((domain1,self.u_gamma_d1,domain2))
+        self.u_over = np.asarray(u_sol).reshape(-1)
+
+    def get_u_over(self):
+        return self.u_over
 
     def get_diff_vector(self):
         return self.diff_vector

@@ -5,14 +5,15 @@ import numpy as np
 from IPython import embed
 
 
-N = 50
+N = 20
 itr = 250
-rel = 0.2
+rel = 1
 onedomain = w1_one_domain.one_domain(n = N)
 onedomain.solve()
 od = onedomain.get_solution()
 
 twodomain = w2_two_domain.two_domain(n = N,iterations=itr,relaxation=rel)
+twodomain.set_prim_solution(od)
 twodomain.set_ugamma(np.flipud(od[1:-1,N-1]))
 twodomain.solve()
 td = twodomain.get_solution()
@@ -23,6 +24,7 @@ td = twodomain.get_solution()
 
 dv = twodomain.get_diff_vector()
 err = twodomain.get_error()
+diffnorm = twodomain.get_difference()
 
 
 diff = td-od
@@ -48,9 +50,8 @@ plt.colorbar()
 # plt.plot(dv)
 # plt.yscale('log')
 plt.subplot(224)
-plt.title("inf-Norm(boundaries u_gamma-u_true)")
-plt.plot(err)
-plt.yscale('log')
+plt.title("$||u_{itr}-u_{simple}||_{F}$")
+plt.semilogy(diffnorm)
 plt.show()
 
 

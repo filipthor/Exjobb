@@ -143,7 +143,7 @@ class two_domain:
     def get_diff_vector(self):
         return self.diff_vector
 
-    def get_residuals(self):
+    def get_residual(self):
         return self.residual
 
     def get_A_over(self):
@@ -154,6 +154,16 @@ class two_domain:
         r2 = scipy.sparse.csr_matrix(hstack((self.AG1,self.AGG2,zrow)))
         r3 = scipy.sparse.csr_matrix(hstack((zrow,self.AGG2,self.AG2)))
         r4 = scipy.sparse.csr_matrix(hstack((zblock,zcolumn,self.A22)))
+        return scipy.sparse.csr_matrix(vstack((r1,r2,r3,r4)))
+
+    def get_A_over_2(self):
+        zblock = np.zeros(((self.n-2) ** 2, (self.n-2)**2))
+        zrow = np.zeros((self.n-2, (self.n-2)**2))
+        zcolumn = np.transpose(zrow)
+        r1 = scipy.sparse.csr_matrix(hstack((self.A11,self.A1G,zblock)))
+        r2 = scipy.sparse.csr_matrix(hstack((self.AG1,self.AGG2,self.AG2)))
+        r3 = scipy.sparse.csr_matrix(hstack((self.AG1,self.AGG2,self.AG2)))
+        r4 = scipy.sparse.csr_matrix(hstack((zblock,self.A2G,self.A22)))
         return scipy.sparse.csr_matrix(vstack((r1,r2,r3,r4)))
 
 
@@ -195,6 +205,32 @@ class two_domain:
         self.b_over = np.asarray(b_over).reshape(-1)
         return np.asarray(b).reshape(-1)
 
+    def get_b_over(self):
+        return self.b_over
+
+    def get_bl(self):
+        return self.bl
+
+    def get_bl_2(self,u1,uG,u2):
+        r1 = np.dot(self.A1G.toarray(),np.transpose(uG))
+        #print("r1:", r1.shape)
+        r2 = np.dot(self.AG2.toarray(),np.transpose(u2))-uG
+        #print("r2:", r2.shape)
+        r3 = -1*(uG-np.dot(self.AG1.toarray(),u1))
+        #print("r3:", r3.shape)
+        r4 = np.dot(self.A2G.toarray(),np.transpose(uG))
+
+        return np.vstack((r1,np.transpose(r2),np.transpose(r3),r4))
+
+    def vis(self,solution):
+        u = np.reshape(solution,(self.n-2+self.n-1,self.n-2))
+        u1 = u[:self.n-2,:]
+        uG = u[self.n-2:self.n-1,:]
+        u2 = u[self.n-1:,:]
+        self.set_solution(u1,uG,u2)
+        self.visualize()
+
+
 
     def solve(self):
         A = self.get_a() # A Global
@@ -211,23 +247,36 @@ class two_domain:
         self.uG = uG
         self.u2 = np.asarray(u2).reshape(-1)
 
-
-
-
+        bl2 = self.get_bl_2(self.u1,self.uG,self.u2)
         A_over = self.get_A_over()
-        residual = A_over*u_solution-self.b_over
-        over_solution = np.linalg.lstsq(A_over.toarray(),(self.b_over+residual))
+        self.bl = A_over*u_solution-self.b_over
+
+        difference_b = self.bl + np.squeeze(bl2)
+        plt.plot(difference_b)
+        plt.show()
+
+        #over_solution = np.linalg.lstsq(A_over.toarray(),(self.b_over+self.bl))
+        over_solution = np.linalg.lstsq(A_over.toarray(), np.transpose((self.b_over - np.transpose(bl2))))
         u_over_solution = over_solution[0]
         residual_over = over_solution[1]
+        self.residual = A_over*u_over_solution-np.transpose((self.b_over - np.transpose(bl2)))
 
-        u_over = np.reshape(u_over_solution,(self.n-2+self.n-1,self.n-2))
-        u1_over = u_over[:self.n-2,:]
-        uG_over = u_over[self.n-2:self.n-1,:]
-        u2_over = u_over[self.n-1:,:]
+        self.vis(u_over_solution)
 
-        self.set_solution(u1_over, uG_over, u2_over)
+        plt.plot(self.residual,'r.')
+        plt.show()
+        #print(residual_over)
+        #embed()
+        #plt.plot(self.residual,'b.')
+        #plt.show()
+
+        #u_over = np.reshape(u_over_solution,(self.n-2+self.n-1,self.n-2))
+        #u1_over = u_over[:self.n-2,:]
+        #uG_over = u_over[self.n-2:self.n-1,:]
+        #u2_over = u_over[self.n-1:,:]
+
+        #self.set_solution(u1_over, uG_over, u2_over)
 
 
         #embed()
-        #self.set_solution(self.u1, self.uG, self.u2)
-
+        self.set_solution(self.u1, self.uG, self.u2)

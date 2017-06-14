@@ -11,7 +11,7 @@ Denna kod är det globala fallet omflyttat kring så att alla A/u är på vl och
 
 '''
 
-N = 20
+N = 30
 itr = 40
 rel = 1
 
@@ -27,8 +27,12 @@ twodomain.solve()
 #embed()
 
 
+
+
+
+
 td = twodomain.get_solution()
-res = twodomain.get_residuals()
+#res = twodomain.get_residual()
 
 err = twodomain.get_error()
 diff = td-od
@@ -47,18 +51,18 @@ plt.title("Difference itr - simple")
 plt.pcolor(diff)
 plt.colorbar()
 
-plt.subplot(234)
-plt.title("LeastSquare residual domain 1")
-plt.plot(res[:,0])
-plt.yscale('log')
+#plt.subplot(234)
+#plt.title("LeastSquare residual domain 1")
+#plt.plot(res[:,0])
+#plt.yscale('log')
 
-plt.subplot(235)
-plt.title("LeastSquare residual domain 2")
-plt.plot(res[:,1])
-plt.yscale('log')
+#plt.subplot(235)
+#plt.title("LeastSquare residual domain 2")
+#plt.plot(res[:,1])
+#plt.yscale('log')
 
-plt.subplot(236)
-plt.title("$||u_{true}-u_{\gamma}||_{\infty}$")
-plt.plot(err)
-plt.yscale('log')
+#plt.subplot(236)
+#plt.title("$||u_{true}-u_{\gamma}||_{\infty}$")
+#plt.plot(err)
+#plt.yscale('log')
 plt.show()
